@@ -600,3 +600,41 @@ deleteDepartment = () => {
       start();
     });
 };
+
+// Role section of deleting menu
+deleteRole = () => {
+  let roleOptions = [];
+  for (var i = 0; i < roles.length; i++) {
+    roleOptions.push(Object(roles[i]));
+  }
+
+  inquirer
+    .prompt([
+      {
+        name: "deleteRole",
+        type: "list",
+        message: "Select a role to delete",
+        choices: function () {
+          var choiceArray = [];
+          for (var i = 0; i < roleOptions.length; i++) {
+            choiceArray.push(roleOptions[i].title);
+          }
+          return choiceArray;
+        },
+      },
+    ])
+    .then((answer) => {
+      for (i = 0; i < roleOptions.length; i++) {
+        if (answer.deleteRole === roleOptions[i].title) {
+          newChoice = roleOptions[i].id;
+          connection.query(`DELETE FROM role Where id = ${newChoice}`),
+            (err, res) => {
+              if (err) throw err;
+            };
+          console.log("Role: " + answer.deleteRole + " Deleted Succesfully");
+        }
+      }
+      getRoles();
+      start();
+    });
+};
