@@ -80,6 +80,16 @@ getDepartments = () => {
   connection.query("SELECT id, name FROM department", (err, res) => {
     if (err) throw err;
     departments = res;
-    // console.log(departments);
   });
+};
+
+// Manager selection
+getManagers = () => {
+  connection.query(
+    "SELECT id, first_name, last_name, CONCAT_WS(' ', first_name, last_name) AS managers FROM employee",
+    (err, res) => {
+      if (err) throw err;
+      managers = res;
+    }
+  );
 };
