@@ -329,3 +329,19 @@ viewDepartments = () => {
     start();
   });
 };
+
+// Roles section of viewing menu
+viewRoles = () => {
+  connection.query(
+    "SELECT  r.id, r.title, r.salary, d.name as Department_Name FROM role AS r INNER JOIN department AS d ON r.department_id = d.id",
+    (err, res) => {
+      if (err) throw err;
+      figlet("Roles", (err, result) => {
+        console.log(err || result);
+      });
+
+      printTable(res);
+      start();
+    }
+  );
+};
