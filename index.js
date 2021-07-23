@@ -361,3 +361,32 @@ viewEmployees = () => {
     }
   );
 };
+
+// Menu for updating table content
+updateSomething = () => {
+  inquirer
+    .prompt([
+      {
+        name: "update",
+        type: "list",
+        message: "Choose something to update:",
+        choices: ["Update employee roles", "Update employee managers", "EXIT"],
+      },
+    ])
+    .then((answer) => {
+      if (answer.update === "Update employee roles") {
+        updateEmployeeRole();
+      } else if (answer.update === "Update employee managers") {
+        updateEmployeeManager();
+      } else if (answer.update === "EXIT") {
+        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+          console.log(err || result);
+        });
+
+        connection.end();
+      } else {
+        connection.end();
+      }
+    });
+};
+f;
