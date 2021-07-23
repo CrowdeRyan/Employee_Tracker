@@ -286,3 +286,33 @@ addEmployee = () => {
       );
     });
 };
+
+// Menu for viewing table content
+viewSomething = () => {
+  inquirer
+    .prompt([
+      {
+        name: "viewChoice",
+        type: "list",
+        message: "What would you like to view?",
+        choices: ["DEPARTMENTS", "ROLES", "EMPLOYEES", "EXIT"],
+      },
+    ])
+    .then((answer) => {
+      if (answer.viewChoice === "DEPARTMENTS") {
+        viewDepartments();
+      } else if (answer.viewChoice === "ROLES") {
+        viewRoles();
+      } else if (answer.viewChoice === "EMPLOYEES") {
+        viewEmployees();
+      } else if (answer.viewChoice === "EXIT") {
+        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+          console.log(err || result);
+        });
+
+        connection.end();
+      } else {
+        connection.end();
+      }
+    });
+};
