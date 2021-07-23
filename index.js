@@ -456,3 +456,72 @@ updateEmployeeRole = () => {
         });
     });
 };
+
+// Manager section of updating menu
+updateEmployeeManager = () => {
+  let employeeOptions = [];
+
+  for (var i = 0; i < employees.length; i++) {
+    employeeOptions.push(Object(employees[i]));
+  }
+  inquirer
+    .prompt([
+      {
+        name: "updateManager",
+        type: "list",
+        message: "Which employee's manager do you want to update?",
+        choices: function () {
+          var choiceArray = [];
+          for (var i = 0; i < employeeOptions.length; i++) {
+            choiceArray.push(employeeOptions[i].Employee_Name);
+          }
+          return choiceArray;
+        },
+      },
+    ])
+    .then((answer) => {
+      getEmployees();
+      getManagers();
+      let managerOptions = [];
+      for (i = 0; i < managers.length; i++) {
+        managerOptions.push(Object(managers[i]));
+      }
+      for (i = 0; i < employeeOptions.length; i++) {
+        if (employeeOptions[i].Employee_Name === answer.updateManager) {
+          employeeSelected = employeeOptions[i].id;
+        }
+      }
+      inquirer
+        .prompt([
+          {
+            name: "newManager",
+            type: "list",
+            message: "Select a new manager:",
+            choices: function () {
+              var choiceArray = [];
+              for (var i = 0; i < managerOptions.length; i++) {
+                choiceArray.push(managerOptions[i].managers);
+              }
+              return choiceArray;
+            },
+          },
+        ])
+        .then((answer) => {
+          for (i = 0; i < managerOptions.length; i++) {
+            if (answer.newManager === managerOptions[i].managers) {
+              newChoice = managerOptions[i].id;
+              connection.query(
+                `UPDATE employee SET manager_id = ${newChoice} WHERE id = ${employeeSelected}`
+              ),
+                (err, res) => {
+                  if (err) throw err;
+                };
+              console.log("Manager Updated Succesfully");
+            }
+          }
+          getEmployees();
+          getManagers();
+          start();
+        });
+    });
+};
