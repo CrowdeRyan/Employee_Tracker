@@ -26,3 +26,13 @@ var connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: "employees_db",
 });
+
+// Connect functions
+connection.connect(function (err) {
+  if (err) throw err;
+  start();
+  getDepartments();
+  getRoles();
+  getManagers();
+  getEmployees();
+});
