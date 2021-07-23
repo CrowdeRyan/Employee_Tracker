@@ -209,6 +209,8 @@ addRole = () => {
 
 // Employee section of adding menu
 addEmployee = () => {
+  getRoles();
+  getManagers();
   let roleOptions = [];
   for (i = 0; i < roles.length; i++) {
     roleOptions.push(Object(roles[i]));
