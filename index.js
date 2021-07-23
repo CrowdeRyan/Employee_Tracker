@@ -74,3 +74,12 @@ getRoles = () => {
     roles = res;
   });
 };
+
+// Department selection
+getDepartments = () => {
+  connection.query("SELECT id, name FROM department", (err, res) => {
+    if (err) throw err;
+    departments = res;
+    // console.log(departments);
+  });
+};
