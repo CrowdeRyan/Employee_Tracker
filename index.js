@@ -105,3 +105,36 @@ getEmployees = () => {
     }
   );
 };
+
+// Menu for adding with content, with figlet display closer
+addSomething = () => {
+  inquirer
+    .prompt([
+      {
+        name: "add",
+        type: "list",
+        message: "What would you like to add?",
+        choices: ["DEPARTMENT", "ROLE", "EMPLOYEE", "EXIT"],
+      },
+    ])
+    .then(function (answer) {
+      if (answer.add === "DEPARTMENT") {
+        console.log("Add a new: " + answer.add);
+        addDepartment();
+      } else if (answer.add === "ROLE") {
+        console.log("Add a new: " + answer.add);
+        addRole();
+      } else if (answer.add === "EMPLOYEE") {
+        console.log("Add a new: " + answer.add);
+        addEmployee();
+      } else if (answer.add === "EXIT") {
+        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+          console.log(err || result);
+        });
+
+        connection.end();
+      } else {
+        connection.end();
+      }
+    });
+};
