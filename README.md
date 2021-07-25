@@ -4,7 +4,17 @@
 
 ## Description: Console Terminal App to display, update, and delete entries in an Employee Registry .
 
+<br>
+
 # Installation:
+
+Run:
+
+                npm i
+
+---
+
+                node app.js
 
 # Usage:
 
