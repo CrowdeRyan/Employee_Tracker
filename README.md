@@ -8,6 +8,14 @@
 
 # Usage:
 
+- Start-up:
+
+![Add function](./images/start.png)
+
+- Viewing:
+
+![Add function](./images/employees.png)
+
 - Adding:
 
 ![Add function](./images/adding.png)
