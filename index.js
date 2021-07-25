@@ -364,8 +364,7 @@ viewRoles = () => {
 // Employees section of viewing menu
 viewEmployees = () => {
   connection.query(
-    // 'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC',
-    "SELECT id, CONCAT_WS(' ', first_name, last_name) AS Employee_Name FROM employee",
+    'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC',
     (err, res) => {
       if (err) throw err;
       figlet("Employees", (err, result) => {
