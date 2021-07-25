@@ -68,7 +68,7 @@ start = () => {
       } else if (answer.choices === "DELETE") {
         deleteSomething();
       } else if (answer.choices === "EXIT") {
-        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+        figlet("Thanks for using UNCC Employee Tracker", (err, result) => {
           console.log(err || result);
         });
 
@@ -113,7 +113,7 @@ getEmployees = () => {
     (err, res) => {
       if (err) throw err;
       employees = res;
-      // console.table(employees);
+      console.table(employees);
     }
   );
 };
