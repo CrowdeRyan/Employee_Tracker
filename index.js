@@ -39,6 +39,10 @@ var connection = mysql.createConnection({
   database: "employees_db",
 });
 
+figlet("UNCC Employee Tracker", (err, result) => {
+  console.log(err || result);
+});
+
 // Connect functions
 connection.connect(function (err) {
   if (err) throw err;
@@ -113,7 +117,6 @@ getEmployees = () => {
     (err, res) => {
       if (err) throw err;
       employees = res;
-      console.table(employees);
     }
   );
 };
@@ -140,7 +143,7 @@ addSomething = () => {
         console.log("Add a new: " + answer.add);
         addEmployee();
       } else if (answer.add === "EXIT") {
-        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+        figlet("Thanks for using UNCC Employee Tracker", (err, result) => {
           console.log(err || result);
         });
 
@@ -318,7 +321,7 @@ viewSomething = () => {
       } else if (answer.viewChoice === "EMPLOYEES") {
         viewEmployees();
       } else if (answer.viewChoice === "EXIT") {
-        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+        figlet("Thanks for using UNCC Employee Tracker", (err, result) => {
           console.log(err || result);
         });
 
@@ -361,7 +364,8 @@ viewRoles = () => {
 // Employees section of viewing menu
 viewEmployees = () => {
   connection.query(
-    'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC',
+    // 'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC',
+    "SELECT id, CONCAT_WS(' ', first_name, last_name) AS Employee_Name FROM employee",
     (err, res) => {
       if (err) throw err;
       figlet("Employees", (err, result) => {
@@ -391,7 +395,7 @@ updateSomething = () => {
       } else if (answer.update === "Update employee managers") {
         updateEmployeeManager();
       } else if (answer.update === "EXIT") {
-        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+        figlet("Thanks for using UNCC Employee Tracker", (err, result) => {
           console.log(err || result);
         });
 
@@ -562,7 +566,7 @@ deleteSomething = () => {
       } else if (answer.delete === "Delete employee") {
         deleteEmployee();
       } else if (answer.delete === "EXIT") {
-        figlet("Thanks for using FSC Employee Tracker", (err, result) => {
+        figlet("Thanks for using UNCC Employee Tracker", (err, result) => {
           console.log(err || result);
         });
 
