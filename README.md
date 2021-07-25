@@ -20,15 +20,24 @@ Run:
 
 - Start-up:
 
-![Add function](./images/start.png)
+![Start](./images/start.png)
 
 - Viewing:
 
-![Add function](./images/employees.png)
+![View Employees](./images/employees.png)
+![View Roles & Departments](./images/roles_and_departments.png)
 
 - Adding:
 
 ![Add function](./images/adding.png)
+
+- Updating:
+
+![Update function](./images/update.png)
+
+- Deleting:
+
+![Delete function](./images/delete.png)
 
 # Questions: https://github.com/Crowderyan
 
