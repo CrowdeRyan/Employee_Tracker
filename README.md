@@ -8,13 +8,17 @@
 
 # Installation:
 
-Run:
+- Run:
 
                 npm i
 
 ---
 
                 node index.js
+
+- Security:
+
+![Delete function](./images/secure.png)
 
 # Usage:
 
