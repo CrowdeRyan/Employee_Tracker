@@ -14,7 +14,7 @@
 
 ---
 
-                node index.js
+                node start
 
 - Security:
 
