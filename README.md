@@ -4,6 +4,8 @@
 
 ## Description: Console Terminal App to display, update, and delete entries in an Employee Registry .
 
+![Employee Tracker Walkthrough](./images/HW12_EmployeeTracker.gif)
+
 Link to Video: [Employee Tracker Walkthrough](https://drive.google.com/file/d/1IzkaO0d_rI96uTz7oVRVd3NUMWxEIPvn/view?usp=sharing)
 
 <br>
